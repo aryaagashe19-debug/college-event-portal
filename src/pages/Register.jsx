@@ -1,34 +1,13 @@
-import { useState } from "react";
-
-function Register() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    event: ""
-  });
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Form Working ✅");
-  };
-
-  return (
-    <div>
-      <h2>Event Registration Form</h2>
+return (
+  <div className="container">
+    <div className="card">
+      <h2>🎉 Event Registration</h2>
 
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           name="name"
-          placeholder="Name"
+          placeholder="Full Name"
           onChange={handleChange}
           required
         />
@@ -36,7 +15,7 @@ function Register() {
         <input
           type="email"
           name="email"
-          placeholder="Email"
+          placeholder="Email Address"
           onChange={handleChange}
           required
         />
@@ -44,7 +23,7 @@ function Register() {
         <input
           type="text"
           name="phone"
-          placeholder="Phone"
+          placeholder="Phone Number"
           onChange={handleChange}
           required
         />
@@ -62,10 +41,8 @@ function Register() {
           <option value="Sports Meet">Sports Meet</option>
         </select>
 
-        <button type="submit">Submit</button>
+        <button type="submit">Register Now</button>
       </form>
     </div>
-  );
-}
-
-export default Register;
+  </div>
+);

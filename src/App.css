@@ -1,5 +1,5 @@
 .register-container {
-  width: 100%;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,47 +7,60 @@
 
 .register-card {
   background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
-  padding: 30px;
-  border-radius: 15px;
-  width: 350px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  backdrop-filter: blur(15px);
+  padding: 40px;
+  border-radius: 20px;
+  width: 380px;
   text-align: center;
-  color: white;
+  box-shadow: 0 0 25px #ff00ff;
+  border: 1px solid rgba(255,255,255,0.2);
 }
 
 .register-card h2 {
+  font-size: 26px;
   margin-bottom: 20px;
+  background: linear-gradient(45deg, #ff00cc, #3333ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .register-card input,
 .register-card select {
   width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border-radius: 8px;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 12px;
   border: none;
+  background: rgba(255,255,255,0.1);
+  color: white;
   outline: none;
+}
+
+.register-card input::placeholder {
+  color: #ddd;
 }
 
 .register-card button {
   width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 8px;
+  padding: 12px;
+  margin-top: 15px;
+  border-radius: 12px;
   border: none;
-  cursor: pointer;
   font-weight: bold;
-  background: linear-gradient(45deg, #3b82f6, #06b6d4);
+  cursor: pointer;
+  background: linear-gradient(45deg, #ff00cc, #3333ff);
   color: white;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 
 .register-card button:hover {
-  transform: scale(1.05);
+  transform: scale(1.08);
+  box-shadow: 0 0 20px #ff00ff;
 }
 
 .register-card img {
-  margin-top: 15px;
+  margin-top: 20px;
   width: 180px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #00ffff;
 }

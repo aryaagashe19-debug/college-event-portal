@@ -6,34 +6,42 @@ function Register() {
     name: "",
     email: "",
     phone: "",
-    event: ""
+    event: "",
   });
 
-  const [qrImage, setQrImage] = useState("");
+  const [qrCode, setQrCode] = useState("");
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleGenerateQR = async (e) => {
     e.preventDefault();
 
-    const qrData = `
+    const data = `
 Name: ${formData.name}
 Email: ${formData.email}
 Phone: ${formData.phone}
 Event: ${formData.event}
-`;
+    `;
 
     try {
-      const url = await QRCode.toDataURL(qrData);
-      setQrImage(url);
+      const url = await QRCode.toDataURL(data);
+      setQrCode(url);
     } catch (err) {
       console.error(err);
     }
+  };
+
+  // 🔥 QR Download Function
+  const downloadQR = () => {
+    const link = document.createElement("a");
+    link.href = qrCode;
+    link.download = "event-qr-code.png";
+    link.click();
   };
 
   return (
@@ -41,7 +49,7 @@ Event: ${formData.event}
       <div className="register-card">
         <h2>Event Registration Form</h2>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleGenerateQR}>
           <input
             type="text"
             name="name"
@@ -61,7 +69,7 @@ Event: ${formData.event}
           />
 
           <input
-            type="text"
+            type="tel"
             name="phone"
             placeholder="Phone"
             value={formData.phone}
@@ -85,11 +93,15 @@ Event: ${formData.event}
           <button type="submit">Generate QR</button>
         </form>
 
-        {qrImage && (
-          <div style={{ marginTop: "20px" }}>
+        {qrCode && (
+          <>
             <h3>Your Event QR Code:</h3>
-            <img src={qrImage} alt="QR Code" />
-          </div>
+            <img src={qrCode} alt="QR Code" />
+
+            <button onClick={downloadQR}>
+              Download QR
+            </button>
+          </>
         )}
       </div>
     </div>

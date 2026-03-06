@@ -1,13 +1,14 @@
 return (
-  <div className="container">
-    <div className="card">
-      <h2>🎉 Event Registration</h2>
+  <div className="register-container">
+    <div className="register-card">
+      <h2>Event Registration Form</h2>
 
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           name="name"
-          placeholder="Full Name"
+          placeholder="Name"
+          value={formData.name}
           onChange={handleChange}
           required
         />
@@ -15,15 +16,17 @@ return (
         <input
           type="email"
           name="email"
-          placeholder="Email Address"
+          placeholder="Email"
+          value={formData.email}
           onChange={handleChange}
           required
         />
 
         <input
-          type="text"
+          type="tel"
           name="phone"
-          placeholder="Phone Number"
+          placeholder="Phone"
+          value={formData.phone}
           onChange={handleChange}
           required
         />
@@ -41,7 +44,7 @@ return (
           <option value="Sports Meet">Sports Meet</option>
         </select>
 
-        <button type="submit">Register Now</button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   </div>

@@ -1,51 +1,76 @@
-return (
-  <div className="register-container">
-    <div className="register-card">
-      <h2>Event Registration Form</h2>
+import { useState } from "react";
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
+function Register() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    event: ""
+  });
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
 
-        <input
-          type="tel"
-          name="phone"
-          placeholder="Phone"
-          value={formData.phone}
-          onChange={handleChange}
-          required
-        />
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("Form Submitted");
+  };
 
-        <select
-          name="event"
-          value={formData.event}
-          onChange={handleChange}
-          required
-        >
-          <option value="">Select Event</option>
-          <option value="Tech Fest 2026">Tech Fest 2026</option>
-          <option value="Hackathon">Hackathon</option>
-          <option value="Cultural Night">Cultural Night</option>
-          <option value="Sports Meet">Sports Meet</option>
-        </select>
+  return (
+    <div className="register-container">
+      <div className="register-card">
+        <h2>Event Registration Form</h2>
 
-        <button type="submit">Submit</button>
-      </form>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+
+          <input
+            type="text"
+            name="phone"
+            placeholder="Phone"
+            value={formData.phone}
+            onChange={handleChange}
+            required
+          />
+
+          <select
+            name="event"
+            value={formData.event}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select Event</option>
+            <option value="Tech Fest 2026">Tech Fest 2026</option>
+            <option value="Hackathon">Hackathon</option>
+            <option value="Cultural Night">Cultural Night</option>
+            <option value="Sports Meet">Sports Meet</option>
+          </select>
+
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     </div>
-  </div>
-);
+  );
+}
+
+export default Register;

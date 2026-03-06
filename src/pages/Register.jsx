@@ -1,75 +1,85 @@
 import { useState } from "react";
-import { QRCodeCanvas } from "qrcode.react";
 
 export default function Register() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    event: "",
+  });
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const userData = { name, email };
+    const response = await fetch(
+      "https://script.google.com/macros/s/AKfycbxkV9Xlc_I4Zdb_-FOBh8eyKeyIkJyXTRMgHj0vvvtprZa39NADsfG9iHDzlrQK-D4V/exec",
+      {
+        method: "POST",
+        body: JSON.stringify(formData),
+      }
+    );
 
-    // Save data in localStorage
-    localStorage.setItem("eventUser", JSON.stringify(userData));
+    const result = await response.json();
 
-    setSubmitted(true);
+    if (result.status === "success") {
+      alert("Registration Successful 🎉");
+      setFormData({ name: "", email: "", phone: "", event: "" });
+    } else {
+      alert("Something went wrong ❌");
+    }
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "80px" }}>
-      <h1>Event Registration 📝</h1>
+    <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <h2>Event Registration Form</h2>
 
-      {!submitted ? (
-        <form onSubmit={handleSubmit} style={{ marginTop: "30px" }}>
-          <input
-            type="text"
-            placeholder="Enter your name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-            style={{ padding: "10px", margin: "10px", width: "250px" }}
-          />
-          <br />
+      <form onSubmit={handleSubmit} style={{ marginTop: "20px" }}>
+        <input
+          type="text"
+          name="name"
+          placeholder="Your Name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
+        <br /><br />
 
-          <input
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            style={{ padding: "10px", margin: "10px", width: "250px" }}
-          />
-          <br />
+        <input
+          type="email"
+          name="email"
+          placeholder="Your Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+        <br /><br />
 
-          <button
-            type="submit"
-            style={{
-              padding: "10px 20px",
-              backgroundColor: "green",
-              color: "white",
-              border: "none",
-              cursor: "pointer",
-            }}
-          >
-            Submit
-          </button>
-        </form>
-      ) : (
-        <div>
-          <h2>Registration Successful ✅</h2>
-          <p>Name: {name}</p>
-          <p>Email: {email}</p>
+        <input
+          type="text"
+          name="phone"
+          placeholder="Your Phone"
+          value={formData.phone}
+          onChange={handleChange}
+          required
+        />
+        <br /><br />
 
-          <div style={{ marginTop: "20px" }}>
-            <QRCodeCanvas
-              value={`Name: ${name}, Email: ${email}`}
-              size={200}
-            />
-          </div>
-        </div>
-      )}
+        <input
+          type="text"
+          name="event"
+          placeholder="Event Name"
+          value={formData.event}
+          onChange={handleChange}
+          required
+        />
+        <br /><br />
+
+        <button type="submit">Submit</button>
+      </form>
     </div>
   );
 }

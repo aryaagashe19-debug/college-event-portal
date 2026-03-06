@@ -1,4 +1,5 @@
 import { useState } from "react";
+import QRCode from "qrcode";
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -8,6 +9,8 @@ function Register() {
     event: ""
   });
 
+  const [qrImage, setQrImage] = useState("");
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -15,9 +18,22 @@ function Register() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Form Submitted");
+
+    const qrData = `
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Event: ${formData.event}
+`;
+
+    try {
+      const url = await QRCode.toDataURL(qrData);
+      setQrImage(url);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -66,8 +82,15 @@ function Register() {
             <option value="Sports Meet">Sports Meet</option>
           </select>
 
-          <button type="submit">Submit</button>
+          <button type="submit">Generate QR</button>
         </form>
+
+        {qrImage && (
+          <div style={{ marginTop: "20px" }}>
+            <h3>Your Event QR Code:</h3>
+            <img src={qrImage} alt="QR Code" />
+          </div>
+        )}
       </div>
     </div>
   );

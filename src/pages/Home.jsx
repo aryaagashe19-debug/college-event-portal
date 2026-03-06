@@ -1,37 +1,30 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-export default function Home() {
+function Home() {
+  const navigate = useNavigate();
+
   return (
-    <div style={{ textAlign: "center", marginTop: "100px" }}>
+    <div className="home-container">
       <h1>Welcome to College Event Portal 🎉</h1>
       <p>Register for upcoming college events</p>
 
-      <div style={{ marginTop: "30px" }}>
-        <Link to="/events">
-          <button style={{
-            padding: "10px 20px",
-            marginRight: "10px",
-            backgroundColor: "orange",
-            border: "none",
-            color: "white",
-            cursor: "pointer"
-          }}>
-            View Events
-          </button>
-        </Link>
+      <div className="btn-group">
+        <button
+          className="btn btn-yellow"
+          onClick={() => navigate("/events")}
+        >
+          View Events
+        </button>
 
-        <Link to="/register">
-          <button style={{
-            padding: "10px 20px",
-            backgroundColor: "darkblue",
-            border: "none",
-            color: "white",
-            cursor: "pointer"
-          }}>
-            Register Now
-          </button>
-        </Link>
+        <button
+          className="btn btn-blue"
+          onClick={() => navigate("/register")}
+        >
+          Register Now
+        </button>
       </div>
     </div>
   );
 }
+
+export default Home;

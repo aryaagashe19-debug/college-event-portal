@@ -1,72 +1,42 @@
-/* Full page party background */
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
   height: 100vh;
-  color: white;
 }
 
-/* Center everything perfectly */
+/* Center full page */
 .home-container {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: center;  /* vertical center */
+  align-items: center;      /* horizontal center */
   text-align: center;
 }
 
-/* Main Heading */
+/* Title */
 .home-container h1 {
-  font-size: 48px;
-  background: linear-gradient(90deg, #ff00cc, #00ffff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: 42px;
+  color: white;
   margin-bottom: 15px;
 }
 
 /* Subtitle */
 .home-container p {
-  font-size: 18px;
-  color: #dddddd;
-  margin-bottom: 30px;
+  color: #f1f1f1;
+  margin-bottom: 20px;
 }
 
-/* Buttons container */
-.button-group {
-  display: flex;
-  gap: 20px;
-}
-
-/* Buttons style */
-.button-group button {
-  padding: 12px 25px;
-  font-size: 16px;
+/* Buttons */
+button {
+  padding: 10px 20px;
+  margin: 5px;
   border: none;
-  border-radius: 30px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: 0.3s;
 }
 
-/* View Events button */
-.btn-yellow {
-  background: #ffcc00;
-  color: black;
-}
-
-.btn-yellow:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 15px #ffcc00;
-}
-
-/* Register button */
-.btn-blue {
-  background: #00e5ff;
-  color: black;
-}
-
-.btn-blue:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 15px #00e5ff;
+button:hover {
+  opacity: 0.9;
 }

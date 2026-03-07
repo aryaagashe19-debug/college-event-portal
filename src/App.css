@@ -1,66 +1,72 @@
-.register-container {
-  min-height: 100vh;
+/* Full page party background */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  height: 100vh;
+  color: white;
+}
+
+/* Center everything perfectly */
+.home-container {
+  height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.register-card {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(15px);
-  padding: 40px;
-  border-radius: 20px;
-  width: 380px;
   text-align: center;
-  box-shadow: 0 0 25px #ff00ff;
-  border: 1px solid rgba(255,255,255,0.2);
 }
 
-.register-card h2 {
-  font-size: 26px;
-  margin-bottom: 20px;
-  background: linear-gradient(45deg, #ff00cc, #3333ff);
+/* Main Heading */
+.home-container h1 {
+  font-size: 48px;
+  background: linear-gradient(90deg, #ff00cc, #00ffff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  margin-bottom: 15px;
 }
 
-.register-card input,
-.register-card select {
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  border-radius: 12px;
+/* Subtitle */
+.home-container p {
+  font-size: 18px;
+  color: #dddddd;
+  margin-bottom: 30px;
+}
+
+/* Buttons container */
+.button-group {
+  display: flex;
+  gap: 20px;
+}
+
+/* Buttons style */
+.button-group button {
+  padding: 12px 25px;
+  font-size: 16px;
   border: none;
-  background: rgba(255,255,255,0.1);
-  color: white;
-  outline: none;
-}
-
-.register-card input::placeholder {
-  color: #ddd;
-}
-
-.register-card button {
-  width: 100%;
-  padding: 12px;
-  margin-top: 15px;
-  border-radius: 12px;
-  border: none;
-  font-weight: bold;
+  border-radius: 30px;
   cursor: pointer;
-  background: linear-gradient(45deg, #ff00cc, #3333ff);
-  color: white;
-  transition: 0.3s ease;
+  transition: 0.3s;
 }
 
-.register-card button:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 20px #ff00ff;
+/* View Events button */
+.btn-yellow {
+  background: #ffcc00;
+  color: black;
 }
 
-.register-card img {
-  margin-top: 20px;
-  width: 180px;
-  border-radius: 10px;
-  box-shadow: 0 0 20px #00ffff;
+.btn-yellow:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px #ffcc00;
+}
+
+/* Register button */
+.btn-blue {
+  background: #00e5ff;
+  color: black;
+}
+
+.btn-blue:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px #00e5ff;
 }

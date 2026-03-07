@@ -1,42 +1,46 @@
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
   height: 100vh;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }
 
-/* Center full page */
-.home-container {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;  /* vertical center */
-  align-items: center;      /* horizontal center */
+.container {
   text-align: center;
 }
 
-/* Title */
-.home-container h1 {
-  font-size: 42px;
-  color: white;
-  margin-bottom: 15px;
+.title {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #ff00cc, #00f2ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* Subtitle */
-.home-container p {
-  color: #f1f1f1;
-  margin-bottom: 20px;
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #ddd;
 }
 
-/* Buttons */
-button {
-  padding: 10px 20px;
-  margin: 5px;
+.button-group button {
+  padding: 12px 25px;
+  margin: 10px;
   border: none;
-  border-radius: 6px;
+  border-radius: 30px;
+  font-size: 1rem;
   cursor: pointer;
+  background: linear-gradient(45deg, #ff00cc, #ff8800);
+  color: white;
+  transition: 0.3s ease;
 }
 
-button:hover {
-  opacity: 0.9;
+.button-group button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px #ff00cc;
 }
